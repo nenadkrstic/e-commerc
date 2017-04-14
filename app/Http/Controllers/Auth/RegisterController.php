@@ -6,7 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Request;
 class RegisterController extends Controller
 {
     /*
@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/index';
+    protected $redirectTo = '/signup';
 
     /**
      * Create a new controller instance.
@@ -64,7 +64,14 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'lname' => $data['lname'],
+            'addres' => $data['addres'],
+            'city' => $data['city'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
+            'visitor' => Request::ip(),
+            'status' => '1' ,
+
             'password' => bcrypt($data['password']),
         ]);
     }
