@@ -13,4 +13,11 @@ class PageController extends Controller
 
         return view('index',compact('art'));
     }
+
+    public function singleArticle($id)
+    {
+        $article = Article::findOrfail($id);
+
+        return view('articles.singleArticle', compact('article'));
+    }
 }

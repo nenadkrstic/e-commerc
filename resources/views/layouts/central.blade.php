@@ -41,6 +41,7 @@
                 <a href="single.blade.php">Quick view</a>
             </div>
         </div>
+
         <div class="col-md-4 grid-stn simpleCart_shelfItem">
             <!-- normal -->
             <div class="ih-item square effect3 bottom_to_top">
@@ -57,6 +58,7 @@
                     </div></div>
             </div>
             <!-- end normal -->
+
             <div class="quick-view">
                 <a href="single.blade.php">Quick view</a>
             </div>
@@ -137,6 +139,7 @@
                     </div></div>
             </div>
             <!-- end normal -->
+
             <div class="quick-view">
                 <a href="single.blade.php">Quick view</a>
             </div>
@@ -153,7 +156,27 @@
         </form>
     </div>
 </div>
-
+<div class="container">
 @foreach($art as $a)
-    <h1>{{print_r($a->price)}}</h1>;
+        <div class="col-md-4 text-center">
+
+                <!-- normal -->
+                <div class="ih-item square effect3 bottom_to_top">
+                    <div class="bottom-2-top">
+                        <div class="img"><img src="images/grid5.jpg" alt="/" class="img-responsive gri-wid"></div>
+                        <div class="info">
+                            <div class="pull-left styl-hdn">
+                             <a href="{{url('singleArticle')}}/{{$a->id}}"><h3>Prikazi vise</h3></a>
+                            </div>
+                            <div class="pull-right styl-price">
+                                <p><a  href="#" class="item_add"><span class="glyphicon glyphicon-shopping-cart grid-cart" aria-hidden="true"></span> <span class=" item_price">{{$a->price}} din</span></a></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div></div>
+
+                </div>
+
+
+        </div>
 @endforeach
+</div>

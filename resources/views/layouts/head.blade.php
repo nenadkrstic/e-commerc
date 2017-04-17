@@ -7,7 +7,7 @@
     <meta charset utf="8">
     <!--fonts-->
     <link href='//fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
-
+    @yield('style')
     <!--fonts-->
     <!--bootstrap-->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">

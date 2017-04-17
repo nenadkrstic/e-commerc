@@ -22,5 +22,6 @@ Route::group(['middleware'=>'Admin'],function(){
 Auth::routes();
 Route::get('/', 'PageController@index');
 Route::get('home', 'PageController@index');
+Route::get('singleArticle/{id}', 'PageController@singleArticle');
 Route::get('logout', 'HomeController@logout');
 
