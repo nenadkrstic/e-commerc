@@ -4,22 +4,14 @@
             <div class="logo">
                 <a href="{{url('home')}}"> e-cvrcak</a>
             </div>
-            <div class="login-bars">
-                <a class="btn btn-default log-bar" href="{{url('register')}}" role="button">Registruj se</a>
-                <a class="btn btn-default log-bar" href="{{url('login')}}" role="button">Uloguj se</a>
-                <div class="cart box_1">
-                    <a href="checkout.blade.php">
-                        <h3>
-                            <div class="total">
-                                <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
-                    </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Korpa prazna</a></p>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <!---menu-----bar--->
+
+
+                     <!--Include layouts cart-->
+                        @include('layouts.cart')
+                    <!--End Include layouts cart-->
+
+
+            <!---menu-----bar--->
         <div class="header-botom text-center">
             <div class="content white ">
                 <nav class="navbar navbar-default nav-menu " role="navigation">

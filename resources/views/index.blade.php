@@ -4,4 +4,5 @@
     @include('layouts.slider')
     @include('layouts.central')
 
+
 @stop

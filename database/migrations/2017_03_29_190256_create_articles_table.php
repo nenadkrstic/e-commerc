@@ -16,14 +16,15 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('description');
             $table->string('brend');
             $table->integer('lager');
-            $table->integer('status');
+            $table->string('type');
+            $table->decimal('price',6,2);
+            $table->string('number');
+            $table->string('img');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -153,3 +153,7 @@
         </form>
     </div>
 </div>
+
+@foreach($art as $a)
+    <h1>{{print_r($a->price)}}</h1>;
+@endforeach
