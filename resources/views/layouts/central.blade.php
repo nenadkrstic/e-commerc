@@ -157,7 +157,8 @@
     </div>
 </div>
 <div class="container">
-@foreach($art as $a)
+@if(isset($art))
+    @foreach($art as $a)
         <div class="col-md-4 text-center">
 
                 <!-- normal -->
@@ -166,7 +167,10 @@
                         <div class="img"><img src="images/grid5.jpg" alt="/" class="img-responsive gri-wid"></div>
                         <div class="info">
                             <div class="pull-left styl-hdn">
-                             <a href="{{url('singleArticle')}}/{{$a->id}}"><h3>Prikazi vise</h3></a>
+                             <a href="{{url('singleArticle')}}/{{$a->id}}"><h6>Prikazi vise</h6></a>
+                            </div>
+                            <div class="pull-left styl-hdn">
+                                <a href="{{url('addToCart',$a->id)}}"><h6>Korpa</h6></a>
                             </div>
                             <div class="pull-right styl-price">
                                 <p><a  href="#" class="item_add"><span class="glyphicon glyphicon-shopping-cart grid-cart" aria-hidden="true"></span> <span class=" item_price">{{$a->price}} din</span></a></p>
@@ -179,4 +183,6 @@
 
         </div>
 @endforeach
+    @endif
 </div>
+

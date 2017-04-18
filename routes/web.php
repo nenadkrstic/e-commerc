@@ -16,6 +16,9 @@ Route::group(['middleware'=>'Admin'],function(){
     Route::get('closeOrders','AdminController@closeOrders');
     Route::get('openOrders','AdminController@openOrders');
     Route::post('saveArticle','AdminController@saveArticle');
+    Route::get('addToCart/{id}','CartController@addToCart');
+    Route::get('cartContent','CartController@cartContent');
+    Route::get('emptyCart','CartController@emptyCart');
 });
 
 
