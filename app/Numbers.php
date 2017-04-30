@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Number extends Model
+class Numbers extends Model
 {
     protected $fillable = [
         'article_id',
-        'number',
+        'size',
     ];
+    public $timestamps = false;
 }

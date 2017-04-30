@@ -18,8 +18,8 @@
                 <div class="col-md-6 log">
                     <h3>Login</h3>
                     <div class="strip"></div>
-                    <p>Welcome, please enter the following to continue.</p>
-                    <p>If you have previously Login with us, <a href="#">Click Here</a></p>
+                    <p>Dobrodošli na našu elektronsku prodavnicu.</p>
+                    <p>Ukoliko nemate kreiran profil, možete  <a href="{{url('register')}}">uraditi ovde</a></p>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
                         <h5>Mail adresa:</h5>
@@ -34,10 +34,11 @@
                     </a>
                 </div>
                 <div class="col-md-6 login-right">
-                    <h3>New Registration</h3>
+                    <h3>registracija</h3>
                     <div class="strip"></div>
+                    <p>Kreirajući vaš profil na našoj web aplikaciji, moćičete da kupujete online</p>
                     <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-                    <a href="register.blade.php" class="button">Create An Account</a>
+                    <a href="register.blade.php" class="button">Kreiraj profil</a>
                 </div>
                 <div class="clearfix"></div>
             </div>

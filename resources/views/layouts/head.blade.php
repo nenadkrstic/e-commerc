@@ -13,8 +13,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!--coustom css-->
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style.master.css" rel="stylesheet" type="text/css"/>
     <!--shop-kart-js-->
     <script src="js/simpleCart.min.js"></script>
+
     <!--default-js-->
     <script src="js/jquery-2.1.4.min.js"></script>
     <!--bootstrap-js-->

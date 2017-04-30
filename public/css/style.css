@@ -22,7 +22,10 @@ body{
 	src:url(../fonts/Pathway_Gothic_One/PathwayGothicOne-Regular.ttf) format('truetype');
 }
 
-
+#radioBtn .notActive{
+    color: #3276b1;
+    background-color: #fff;
+}
 .header-top{
     position: relative;
     padding: 0;

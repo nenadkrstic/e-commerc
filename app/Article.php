@@ -12,10 +12,11 @@ class Article extends Model
         'brend',
         'lager',
         'type',
-        'img',
         'price',
-        'number',
+
     ];
+
+
 }
 
 

@@ -1,0 +1,22 @@
+#cartContent{
+    border: 1px solid black;
+    border-left:0 ;
+
+}
+
+#textSingleArticle{
+    color: #1a4a72;
+    padding-top:50px;
+
+}
+
+#singleArticle{
+    padding-left: 10px;
+    border: 1px solid #1a4a72;
+}
+#registerPanel{
+    border: none;
+    border-right: 1px solid black;
+
+}
+

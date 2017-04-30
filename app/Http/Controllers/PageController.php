@@ -17,7 +17,10 @@ class PageController extends Controller
     public function singleArticle($id)
     {
         $article = Article::findOrfail($id);
+        $num = $article->number;
+        $numArray = explode(',',$num);
 
-        return view('articles.singleArticle', compact('article'));
+
+        return view('articles.singleArticle', compact('article','numArray'));
     }
 }

@@ -3,7 +3,11 @@
 @section('content')
 <h1 class="text-center">Kreiraj artikl</h1><hr>
 <div id="createArticle"class="container">
-    {!! Form::open(['url'=>'saveArticle','method'=>'post']) !!}
+    @if(Session::has('create_article'))
+        <h2 class="text-center">{{Session::get('create_article')}}</h2>
+        @endif
+
+    {!! Form::open(['url'=>'saveArticle','method'=>'post','enctype' => 'multipart/form-data']) !!}
         {{csrf_field()}}
 
     <div class="form-group row">
@@ -75,8 +79,13 @@
 
                 <div class="col-md-6">
                     <label name="img">Odaberi sliku artikla</label>
-                    <input class="btn btn-primary" type="file" name="img">
-                </div>
+
+                            {{ Form::file('img[]',['multiple' => 'multiple','id'=>'fileupload']
+                            ) }}
+
+
+
+                 </div>
 
             </div>
 
@@ -90,6 +99,6 @@
 
 
 
-    {!! Form::close() !!}
+{!! Form::close() !!}
 </div>
-    @stop
+@stop

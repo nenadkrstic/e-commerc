@@ -19,6 +19,8 @@ Route::group(['middleware'=>'Admin'],function(){
     Route::get('addToCart/{id}','CartController@addToCart');
     Route::get('cartContent','CartController@cartContent');
     Route::get('emptyCart','CartController@emptyCart');
+    Route::get('singleDelete/{id}','CartController@singleDelete');
+    Route::get('makeOrder','CartController@makeOrder');
 });
 
 

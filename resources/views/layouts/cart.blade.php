@@ -2,6 +2,7 @@
     @if(Auth::check())
         <a class="btn btn-default log-bar" href="{{url('register')}}" role="button">Dobrodosli: <strong>{{Auth::user()->name}}</strong></a>
         <a class="btn btn-default log-bar" href="{{url('logout')}}" role="button">Odjavi se</a>
+        <a class="btn btn-default log-bar" href="{{url('emptyCart')}}" role="button">Isprazni korpu</a>
         @if(Auth::user()->status == 9)
             <a class="btn btn-default log-bar" href="{{url('adminPanel')}}" role="button">Admin panel</a>
             @endif
@@ -13,18 +14,17 @@
     @endif
     @if(Cart::count()>0)
         <p><a href="{{url('cartContent')}}" class="simpleCart_empty">Sadrzaj Korpe</a></p>
-        <p>Broj artikla {{Cart::count()}}</p>
-        <p><a href="" class="simpleCart_empty"></a></p>
+        <p>Broj artikla <span class="badge">{{Cart::count()}}</span></p>
 
-        <p><a href="{{url('emptyCart')}}" class="simpleCart_empty">Isprazni korpu</a></p>
+        <p>Ukupno  <span class="badge">{{Cart::subtotal()}}</span></p>
+
+
+
             <div class="cart box_1">
-                <a href="">
-                    <h3>  <div class="total">
-                            <span class="simpleCart_total"></span>(<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)</div></h3>
-                </a>
 
-        @else
-            <p>Vasa korpa je prazna</p>
+
+
+
 
         @endif
 
