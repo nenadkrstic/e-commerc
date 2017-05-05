@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Numbers;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -16,7 +16,14 @@ class Article extends Model
 
     ];
 
+    public function articleNumber()
+    {
+       return $this->hasMany('App\Numbers');
+    }
+
 
 }
+
+
 
 

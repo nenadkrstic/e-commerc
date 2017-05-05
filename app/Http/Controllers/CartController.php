@@ -9,6 +9,7 @@ use Auth;
 use App\Carts;
 use App\Numbers;
 use Session;
+use DB;
 
 
 class CartController extends Controller
@@ -22,7 +23,7 @@ class CartController extends Controller
 
         Cart::add($productId, $articles->id, 1, $articles->price, ['desc' => $articles['description'], 'size' => $number['number']]);
 
-        return redirect()->back();
+        return redirect('/');
 
     }
 
@@ -48,28 +49,37 @@ class CartController extends Controller
 
     public function makeOrder()
     {
+ Cart::content();
+        /*
+         * Insert bay article into cart table width status open cart
+         *
+         */
+//return Cart::Content();
 
-
-//return Cart::content();
-
-        foreach (Cart::content() as $cart)
+       foreach (Cart::content() as $cart)
             {
-
-
-              $cartBay['user_id'] = Auth::user()->id;
+                /*
+                 * Create cart for chosen articles
+                 *
+                 */
+                $cartBay['user_id'] = Auth::user()->id;
                 $cartBay['articles_id'] = (int)$cart->id;
-                $cartBay['size'] = $cart->options->size;
+                $cartBay['article_number'] = $cart->options->size;
                 $cartBay['cart_status'] = 'open';
                 $cartBay['price'] = $cart->price;
                 Carts::create($cartBay);
-
-                
-
+                /*
+                 * Delete size for curent article
+                 *
+                 */
+                DB::delete("DELETE FROM numbers where 
+                article_id ={$cartBay['articles_id']} and size = {$cartBay['article_number']} limit 1");
             }
 
-        Cart::destroy();
-        Session::flash('cart','Uspešno ste kupili artikal, uskoro đe vam se javiti naš operate zbog potvrde porudzbine, hvala!!!');
-return redirect('/');
+
+       Cart::destroy();
+       Session::flash('cartMsg','Uspešno ste kupili artikal, uskoro đe vam se javiti naš operater zbog potvrde porudzbine, hvala!!!');
+        return redirect('/');
 
 
 

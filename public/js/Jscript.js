@@ -1,8 +1,8 @@
 /**
  * Created by Nesa on 4/26/2017.
  */
-$().ready(function(){
- 
+$(document).ready(function(){
+
 });
 
 function number() {
@@ -16,4 +16,38 @@ function number() {
 
         return true;
     }
+}
+
+function contact(){
+  $('#links').load('contact');
+    $('html, body').animate({
+        scrollTop: $("#links").offset().top
+    }, 2000);
+  return false;
+}
+
+function support(){
+    $('#links').load('support');
+    $('html, body').animate({
+        scrollTop: $("#links").offset().top
+    }, 2000);
+    return false;
+}
+
+function delivery(){
+    $('#links').load('delivery');
+    $('html, body').animate({
+        scrollTop: $("#links").offset().top
+    }, 2000);
+    return false;
+}
+
+function maps(){
+    $('#links').load('maps');
+
+    $('html, body').animate({
+        scrollTop: $("#links").offset().top
+    }, 2000);
+
+    return false;
 }

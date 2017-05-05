@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class Carts extends Model
 {
     protected $fillable = [
@@ -13,4 +15,9 @@ class Carts extends Model
         'cart_status',
         'price',
     ];
+
+    public function cartUser()
+    {
+      return  $this->belongsTo('App\User');
+    }
 }

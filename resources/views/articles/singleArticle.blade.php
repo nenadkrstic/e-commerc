@@ -36,9 +36,10 @@
                <div class="col-md-4 text-center">
                    <form method="GET" action="{{url('addToCart')}}/{{$article->id}}">
                         <select id ="number" onSubmit="number()" name="number" class="form-control input-sm text-center" onChange="selectNumber(this.value)">
-                            @foreach($numArray as $num)
 
-                                <option  value="{{$num}}">{{$num}}</option>
+                            @foreach($articleNumber as $num)
+
+                                <option  value="{{$num->size}}">{{$num->size}}</option>
 
 
                             @endforeach

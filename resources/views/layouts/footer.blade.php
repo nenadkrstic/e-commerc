@@ -2,6 +2,7 @@
 
 
 <div class="footer-grid">
+    <div id="links" class="container text-center"></div>
             <div class="container">
                 <div class="col-md-2 re-ft-grd">
                     <h3>Categories</h3>
@@ -17,17 +18,17 @@
                 <div class="col-md-2 re-ft-grd">
                     <h3>Short links</h3>
                     <ul class="shot-links">
-                        <li><a href="#">Kontaktirajte nas</a></li>
-                        <li><a href="#">Podrška</a></li>
-                        <li><a href="#">Isporuka</a></li>
+                        <li><a href="#links" onclick="contact();return false;">Kontaktirajte nas</a></li>
+                        <li><a href="#" onclick="support();return false;">Podrška</a></li>
+                        <li><a href="#" onclick="delivery();return false;">Isporuka</a></li>
 
-                        <li><a href="contact.html">Mapa</a></li>
+                        <li><a href=""  onclick="maps();return false;">Mapa</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 re-ft-grd">
                     <h3>Social</h3>
                     <ul class="social">
-                        <li><a href="#" class="fb">facebook</a></li>
+                        <li><a href="#"   class="fb">facebook</a></li>
                         <li><a href="#" class="twt">twitter</a></li>
                         <li><a href="#" class="gpls">g+ plus</a></li>
                         <div class="clearfix"></div>
@@ -48,3 +49,4 @@
                 </div>
             </div>
         </div>
+

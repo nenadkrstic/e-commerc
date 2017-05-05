@@ -21,6 +21,8 @@ Route::group(['middleware'=>'Admin'],function(){
     Route::get('emptyCart','CartController@emptyCart');
     Route::get('singleDelete/{id}','CartController@singleDelete');
     Route::get('makeOrder','CartController@makeOrder');
+    Route::get('openOrders','AdminController@openOrders');
+    Route::get('closeOrder/{id}','AdminController@closeOrder');
 });
 
 
@@ -29,4 +31,8 @@ Route::get('/', 'PageController@index');
 Route::get('home', 'PageController@index');
 Route::get('singleArticle/{id}', 'PageController@singleArticle');
 Route::get('logout', 'HomeController@logout');
+Route::get('contact', 'PageController@contact');
+Route::get('support', 'PageController@support');
+Route::get('delivery', 'PageController@delivery');
+Route::get('maps', 'PageController@maps');
 

@@ -10,7 +10,9 @@ use Image;
 use App\Images;
 use ArticleRequest;
 use File;
-
+use App\Carts;
+use App\User;
+use DB;
 
 
 class AdminController extends Controller
@@ -41,28 +43,14 @@ class AdminController extends Controller
 
 
             //Get last insert article ID
-            $lastId =  Article::all()->last()->id;
+             $id =  Article::all()->last()->id;
+           $lastId = $id + 1;
            
 
             //Create directory for new listing and put uploaded images from array at same dir.
             File::makeDirectory('../public/uploads/article-'.$lastId);
             $img = $request->file('img');
-            $count = 0;
-            foreach ($img as $i) {
-                $count++;
 
-                // save multiple images in file
-                $file = '.' . $i->getClientOriginalExtension();
-                Image::make($i)->resize('300', '300')->save('../public/uploads/article-'.$lastId.'/img'.$count.''.$file);
-
-                /*
-                *Create
-                */
-                $image['article_id'] = $lastId;
-                $image['image'] = 'img'.$count.''.$file;
-
-                Images::create($image);
-            }
 
             /*
          * Create Articles
@@ -89,6 +77,23 @@ class AdminController extends Controller
              *
              */
 
+            $count = 0;
+            foreach ($img as $i) {
+                $count++;
+
+                // save multiple images in file
+                $file = '.' . $i->getClientOriginalExtension();
+                Image::make($i)->resize('300', '300')->save('../public/uploads/article-'.$lastId.'/img'.$count.''.$file);
+
+                /*
+                *Create
+                */
+                $image['article_id'] = $lastId;
+                $image['image'] = 'img'.$count.''.$file;
+
+                Images::create($image);
+            }
+
 
 
             Session::flash('create_article', 'Uspesno ste snimili artikal u bazu');
@@ -100,7 +105,35 @@ class AdminController extends Controller
     return redirect()->back();
 
     }
+
+
 }
+
+    public function openOrders()
+    {
+
+       $cart = DB::select('SELECT users.fname, users.lname, users.addres, users.city, users.phone,
+        carts.id, carts.article_number, carts.price,
+        articles.name, articles.description, articles.brend, articles.type, articles.price,  
+        images.image
+        FROM users JOIN carts 
+        on users.id = carts.user_id
+        JOIN articles on articles.id = carts.articles_id
+        JOIN  images on articles.id = images.article_id ORDER BY id DESC');
+
+     // $cart = Carts::where('cart_status','open')->get();
+
+      return view('admin.openCart', compact('cart'));
+    }
+
+    public function closeOrder($id)
+    {
+        $id = Carts::findOrFail($id);
+         $id->cart_status = 'close';
+         $id->save();
+         Session::flash('cart','Uspesno zatvorena porudzbina!!!');
+         return redirect()->back();
+    }
 
 
 

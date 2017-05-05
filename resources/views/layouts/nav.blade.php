@@ -10,7 +10,9 @@
                         @include('layouts.cart')
                     <!--End Include layouts cart-->
 
-
+            @if(Session::has('cartMsg'))
+              <h3 class="text-center">{{ Session::get('cartMsg') }}</h3>
+        @endif
             <!---menu-----bar--->
         <div class="header-botom text-center">
             <div class="content white ">
