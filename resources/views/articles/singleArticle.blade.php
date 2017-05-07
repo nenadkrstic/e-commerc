@@ -18,50 +18,62 @@
 @section('content')
 
 @if(!Auth::user())
-    <p class="text-center"> Morate biti ulogovani ukoliko želite da naručite artikal</p>
+    <p class="text-center"> Morate biti ulogovani ukoliko želite da naručite artikal ili mozete nas kontaktirati na broj 064-123456</p>
     @endif
-<div class="container text-center" >
-    <div class="col-md-3 pull-left"></div><div class="col-md-8 text-left" id="singleArticle">
-    <div class="media">
-        <div class="media-left">
-            <a href="#">
-                <img src="../images/grid5.jpg" alt="/" class="media-object">
-            </a>
+
+<!----------------------------------------------------------------------------------------->
+
+<div id="listingSection" class="container media">
+    <div class="media-left">
+        <a href="#">
+            <img class="media-object" src="../../public/uploads/article-{{$data->id}}/img1.jpg" alt="{{$data->name}}" width="200px">
+
+        </a>
+
+    </div>
+    <div class="media-body">
+        <div class="col-md-4">
+            <p>Atikal</p><hr>
+            <p class="media-heading"> {{$data->name}}</p>
+
+            <p>{{$data->description}}</p>
+            <p>{{$data->type}}</p>
+
+
         </div>
-        <div class="media-body" id="textSingleArticle">
+        <div class="col-md-1">
+            <p>Cena</p><hr>
+            <p class="media-heading"> {{$data->price}} .RSD</p>
+        </div>
+        <div class="col-md-4">
+            <p>Oadberite Broj</p><hr>
+                <form method="GET" action="{{url('addToCart')}}/{{$data->id}}">
+                        <select id ="number"  name="number" class="form-control input-sm text-center" onChange="selectNumber(this.value)">
 
-            <p>Naziv artikla: {{$article->name}}</p>
-            <p>{{$article->description}}</p>
-            <p>Cena artkla: <strong>{{$article->price}}</strong> RSD</p><br>
-               <div class="col-md-4 text-center">
-                   <form method="GET" action="{{url('addToCart')}}/{{$article->id}}">
-                        <select id ="number" onSubmit="number()" name="number" class="form-control input-sm text-center" onChange="selectNumber(this.value)">
+                               @foreach($data->articleNumber as $size)
 
-                            @foreach($articleNumber as $num)
-
-                                <option  value="{{$num->size}}">{{$num->size}}</option>
+                                    <option  value="{{$size->size}}">{{$size->size}}</option>
+                               @endforeach
 
 
-                            @endforeach
                         </select><br>
 
 
 
-                        </div>
-                            <div class="col-md-4 pull-right">
-                                @if(Auth::user())
-                                   <a href="{{url('addToCart',$article->id)}}" ><button class="btn btn-block btn-primary">Ubaci u korpu</button></a>
-                                @endif
+        </div>
 
+    </div>
 
+    <div class="col-md-3 pull-right">
+        @if(Auth::user())
+            <a href="{{url('addToCart',$data->id)}}" ><button class="btn btn-block btn-primary">Ubaci u korpu</button></a>
+        @endif
+    </div>
+    </form>
 
-                        </div>
-                    </form>
-            </div>
-       </div>
-   </div>
-
+    </div><hr>
 </div>
+<!----------------------------------------------------------------------------------------->
 
 
 

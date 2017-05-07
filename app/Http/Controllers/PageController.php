@@ -17,13 +17,8 @@ class PageController extends Controller
     public function singleArticle($id)
     {
 
-        $article = Article::findOrfail($id);
-        $articleNumber = Article::findOrfail($id)->articleNumber()->get();
-        //return $articleNumber;
-
-
-
-        return view('articles.singleArticle', compact('article','articleNumber'));
+       $data = Article::findOrfail($id);
+        return view('articles.singleArticle', compact('data'));
     }
 
     public function contact()

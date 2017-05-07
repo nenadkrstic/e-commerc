@@ -1,3 +1,5 @@
+
+
 @include('layouts.head')
 <nav class="navbar navbar-default">
     <div class="container">
@@ -19,7 +21,7 @@
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="{{url('createArticle')}}">Ubaci artikal</a></li>
                     <li><a href="{{url('openOrders')}}">Ovorene porudzbenice</a></li>
-                    <li><a href="{{url('closeOrders')}}">Zatvorene porudzbenice</a></li>
+                    <li><a href="{{url('closedOrdersView')}}">Zatvorene porudzbenice</a></li>
 
 
                 </ul>

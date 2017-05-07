@@ -21,6 +21,11 @@ class Article extends Model
        return $this->hasMany('App\Numbers');
     }
 
+    public function articleImage()
+    {
+        return $this->hasMany('App\Images');
+    }
+
 
 }
 

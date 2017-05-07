@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+
 use Illuminate\Http\Request;
 use App\Numbers;
 use Session;
 use Image;
-use App\Images;
-use ArticleRequest;
-use File;
 use App\Carts;
 use App\User;
+use App\Images;
+use App\Article;
+use ArticleRequest;
+use File;
+
 use DB;
 
 
@@ -112,27 +114,24 @@ class AdminController extends Controller
     public function openOrders()
     {
 
-       $cart = DB::select('SELECT users.fname, users.lname, users.addres, users.city, users.phone,
-        carts.id, carts.article_number, carts.price,
-        articles.name, articles.description, articles.brend, articles.type, articles.price,  
-        images.image
-        FROM users JOIN carts 
-        on users.id = carts.user_id
-        JOIN articles on articles.id = carts.articles_id
-        JOIN  images on articles.id = images.article_id ORDER BY id DESC');
 
-     // $cart = Carts::where('cart_status','open')->get();
-
-      return view('admin.openCart', compact('cart'));
+     $cart = Carts::where('cart_status', 'open')->paginate(10);
+        return view('admin.openCart', compact('cart'));
     }
 
     public function closeOrder($id)
     {
-        $id = Carts::findOrFail($id);
+         $id = Carts::findOrFail($id);
          $id->cart_status = 'close';
          $id->save();
          Session::flash('cart','Uspesno zatvorena porudzbina!!!');
          return redirect()->back();
+    }
+
+    public function closedOrdersView()
+    {
+         $cart = Carts::where('cart_status','close')->orderBy('id','desc')->paginate(15);
+         return view('admin.closeCarts',compact('cart'));
     }
 
 

@@ -1,9 +1,10 @@
-/**
- * Created by Nesa on 4/26/2017.
- */
-$(document).ready(function(){
 
+$( document ).ready(function() {
+    $('#hide').fadeOut(5000);
 });
+
+
+
 
 function number() {
   //  var ansver = confirm("Odabrali ste brpj obuce " +number);

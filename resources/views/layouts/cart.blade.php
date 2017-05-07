@@ -1,6 +1,6 @@
 <div class="login-bars">
     @if(Auth::check())
-        <a class="btn btn-default log-bar" href="{{url('register')}}" role="button">Dobrodosli: <strong>{{Auth::user()->name}}</strong></a>
+        <a class="btn btn-default log-bar" href="{{url('register')}}" role="button">Dobrodosli: <strong>{{Auth::user()->fname}}</strong></a>
         <a class="btn btn-default log-bar" href="{{url('logout')}}" role="button">Odjavi se</a>
         <a class="btn btn-default log-bar" href="{{url('emptyCart')}}" role="button">Isprazni korpu</a>
         @if(Auth::user()->status == 9)

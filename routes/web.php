@@ -23,6 +23,7 @@ Route::group(['middleware'=>'Admin'],function(){
     Route::get('makeOrder','CartController@makeOrder');
     Route::get('openOrders','AdminController@openOrders');
     Route::get('closeOrder/{id}','AdminController@closeOrder');
+    Route::get('closedOrdersView','AdminController@closedOrdersView');
 });
 
 

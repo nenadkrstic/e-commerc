@@ -1,35 +1,67 @@
 @extends('admin.appAdmin')
 
 @section('content')
+
+
+
 <div class="container">
-    @if(Session::has('cart'))
-        <h3 class="text-center ">{{Session::get('cart')}}</h3>
+    @if(Session('cart'))
+        <div id="hide"  class="alert alert-success">
+            <strong class="text-center"><h3>{{Session('cart')}}</h3></strong>
+        </div>
+
 
     @endif
-     @foreach($cart as $c)
-<div class="container">
-         <div class="col-md-5">
-             <h2>{{$c->fname}}</h2>
-           <h3>{{$c->lname}}</h3>
-           <h4>{{$c->addres}}</h4>
-            <h4>{{$c->city}}</h4>
-             <h4>{{$c->phone}}</h4>
 
-         </div>
-        <div class="coll-md-5">
-            <h2>{{$c->name}}</h2>
-             <h4>{{$c->article_number}}</h4>
-            <h4>{{$c->price}}</h4>
-            <h4> {{$c->description}}</h4>
-            <h4> {{$c->brend}}</h4>
-            <h4>{{$c->type}}</h4>
+    <h2 class="text-center ">Otvorene porudzbine</h2><hr>
+
+        @foreach($cart as $data)
+            <div id="listingSection" class="media">
+                <div class="media-left">
+                    <a href="#">
+
+                        <img class="media-object" src="../public/uploads/article-{{$data->cartToArticle->id}}/img1.jpg" alt="{{$data->cartToArticle->name}}" width="200px">
+
+                    </a>
+
+                </div>
+                <div class="media-body">
+                    <div class="col-md-4">
+                        <p>Atikal</p><hr>
+
+                        <p class="media-heading">{{$data->cartToArticle->name}}</p>
+                        <p class="media-heading">{{$data->cartToArticle->description}}</p>
+                        <p class="media-heading">{{$data->cartToArticle->brand}}</p>
+                        <p class="media-heading">{{$data->cartToArticle->type}}</p>
+                        <p class="media-heading">{{$data->cartToArticle->price}}</p>
+
+                    </div>
+                    <div class="col-md-1">
+                        <p>Cena</p><hr>
+                        <h5 class="media-heading"> {{$data->price}}</h5>
+                    </div>
+                     <div class="col-md-3">
+                        <p>Podaci</p><hr>
+                        <h5 class="media-heading">{{$data->cartToUser->fname}} {{$data->cartToUser->lname}}</h5>
+                        <h5 class="media-heading">{{$data->cartToUser->city}}</h5>
+                        <h5 class="media-heading">{{$data->cartToUser->addres}}</h5>
+                        <h5 class="media-heading">{{$data->cartToUser->number}}</h5>
+
+                    </div>
+
+                    <div class="col-md-2">
+                        <p>Telefon</p><hr>
+                        <h5 class="media-heading">{{$data->cartToUser->phone}}</h5><hr>
+                        <p class="media-heading">Broj korpe: {{$data->id}}</p>
+                        <p class="media-heading">Korpa kreirana: {{$data->cartToUser->created_at}}</p>
+                        <a href="{{url('closeOrder',$data->id)}}"><button class="btn btn-sm btn-primary">Zatvori porudzbinu</button></a>
+                    </div>
 
 
-            <img src="../../public/uploads/article-/img1.jpg">
+                </div><hr>
+            </div>
 
-             <a href="{{url('closeOrder')}}/{{$c->id}}">Zatvori poridzinu</a>
-         </div>
-</div>
-         @endforeach
+        @endforeach
+    {{$cart->links()}}
      </div>
 @stop

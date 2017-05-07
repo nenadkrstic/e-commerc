@@ -16,8 +16,13 @@ class Carts extends Model
         'price',
     ];
 
-    public function cartUser()
+    public function cartToUser()
     {
-      return  $this->belongsTo('App\User');
+      return  $this->belongsTo('App\User', 'user_id');
+    }
+
+    public function cartToArticle()
+    {
+        return $this->belongsTo('App\Article','articles_id');
     }
 }
