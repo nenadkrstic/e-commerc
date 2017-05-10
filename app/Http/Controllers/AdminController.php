@@ -37,87 +37,114 @@ class AdminController extends Controller
         return view('admin.createArticle');
     }
 
+    /*
+     *insert numbers for curent article
+     *
+     */
+    public function articleNumber($numbers)
+    {
+        /*
+         * Create numbers for already inserted article at table numbers width foreign key on articles id
+         *
+         */
+        $numbers = explode(',', $numbers);
+        foreach ($numbers as $number)
+        {
+            $numberArt['article_id'] = $lastId;
+            $numberArt['size'] = $number;
+            Numbers::create($numberArt);
+        }
+
+    }
+
+    /*
+     * Save image to upload directory
+     */
+
+    public function imageCreate($img, $lastId)
+    {
+        /*
+         *  Create numbers for already inserted article at table numbers width foreign key on articles id
+         *
+        */
+
+        $count = 0;
+        foreach ($img as $i)
+        {
+            $count++;
+            // save multiple images in file
+            $file = '.' . $i->getClientOriginalExtension();
+            Image::make($i)->resize('300', '300')->save('../public/uploads/article-'.$lastId.'/img'.$count.''.$file);
+
+            $image['article_id'] = $lastId;
+            $image['image'] = 'img'.$count.''.$file;
+
+            Images::create($image);
+        }
+
+    }
+
+    /*
+     *create article
+     *
+     */
+
     public function saveArticle(Request $request)
     {
         if ($request->hasFile('img')) {
-
-
-
-
-            //Get last insert article ID
+             //Get last insert article ID
              $id =  Article::all()->last()->id;
-           $lastId = $id + 1;
+             $lastId = $id + 1;
            
 
-            //Create directory for new listing and put uploaded images from array at same dir.
-            File::makeDirectory('../public/uploads/article-'.$lastId);
-            $img = $request->file('img');
-
-
-            /*
-         * Create Articles
-         *
-         */
-            $art = $request->all();
-            Article::create($art);
-
-            $numbers = $request->number;
-            /*
-             * Create numbers for already inserted article at table numbers width foreign key on articles id
-             *
-             */
-
-            $numbers = explode(',', $numbers);
-            foreach ($numbers as $number) {
-                $numberArt['article_id'] = $lastId;
-                $numberArt['size'] = $number;
-                Numbers::create($numberArt);
-            }
-
-            /*
-             *  Create numbers for already inserted article at table numbers width foreign key on articles id
-             *
-             */
-
-            $count = 0;
-            foreach ($img as $i) {
-                $count++;
-
-                // save multiple images in file
-                $file = '.' . $i->getClientOriginalExtension();
-                Image::make($i)->resize('300', '300')->save('../public/uploads/article-'.$lastId.'/img'.$count.''.$file);
-
-                /*
-                *Create
-                */
-                $image['article_id'] = $lastId;
-                $image['image'] = 'img'.$count.''.$file;
-
-                Images::create($image);
-            }
+             //Create directory for new listing and put uploaded images from array at same dir.
+             File::makeDirectory('../public/uploads/article-'.$lastId);
+             $img = $request->file('img');
 
 
 
-            Session::flash('create_article', 'Uspesno ste snimili artikal u bazu');
-            return redirect()->back();
+             // Create Articles
 
-    }else{
+             $art = $request->all();
+             Article::create($art);
 
-    Session::flash('create_article','Morate da ubacite sliku');
-    return redirect()->back();
+             $numbers = $request->number;
 
-    }
+              //Call articleMethod and explode string, insert numbers for article at table numbers width foreign key on articles id
+             $this->articleNumber($numbers);
+
+
+               //call imageCreate method for insert image at directoy
+             $this->imageCreate($img, $lastId);
+
+
+
+              Session::flash('create_article', 'Uspesno ste snimili artikal u bazu');
+             return redirect()->back();
+
+        }else{
+
+        Session::flash('create_article','Morate da ubacite sliku');
+        return redirect()->back();
+
+        }
 
 
 }
+    /*
+     * admin panel with open orders and waiting from admin to close orders
+     *
+     */
 
     public function openOrders()
     {
-
-
-     $cart = Carts::where('cart_status', 'open')->paginate(10);
+        $cart = Carts::where('cart_status', 'open')->paginate(15);
         return view('admin.openCart', compact('cart'));
     }
+    /*
+     * close orders
+     *
+     */
 
     public function closeOrder($id)
     {
@@ -127,6 +154,11 @@ class AdminController extends Controller
          Session::flash('cart','Uspesno zatvorena porudzbina!!!');
          return redirect()->back();
     }
+
+    /*
+     * admin panel with open closed orders
+     *
+     */
 
     public function closedOrdersView()
     {

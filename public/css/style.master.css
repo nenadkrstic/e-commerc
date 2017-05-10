@@ -15,9 +15,14 @@
     border: 1px solid #1a4a72;
 }
 #registerPanel{
+
+    padding: 20px;
     border: none;
     border-right: 1px solid black;
 
+}
+#registerPanel label{
+    font-size: 20px;
 }
 
 #links{

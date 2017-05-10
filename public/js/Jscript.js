@@ -3,6 +3,30 @@ $( document ).ready(function() {
     $('#hide').fadeOut(5000);
 });
 
+function validateForm(){
+    var name = $('#name').val();
+    var lname = $('#lname').val();
+    var addres = $('#addres').val();
+    var city = $('#city').val();
+    var phone = $('#phone').val();
+    var mail = $('#mail').val();
+    var password = $('#password').val();
+
+        if(name == ""){
+
+
+            $('#validate').append('Ime moa biti popunjeno');
+            $('#name').css({'border-color':'red'});
+            $('html, body').animate({
+                scrollTop: $("#top").offset().top
+            }, 2000);
+            return false;
+        }
+
+
+
+}
+
 
 
 
