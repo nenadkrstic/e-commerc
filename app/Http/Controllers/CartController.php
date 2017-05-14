@@ -42,7 +42,7 @@ class CartController extends Controller
         return redirect()->back();
     }
     /*
-     * delete single  article
+     * Remove single  article from cart
      */
     public function singleDelete($id)
     {
@@ -81,7 +81,7 @@ class CartController extends Controller
 
 
        Cart::destroy();
-       Session::flash('cartMsg','Uspešno ste kupili artikal, uskoro đe vam se javiti naš operater zbog potvrde porudzbine, hvala!!!');
+       Session::flash('cartMsg','Uspešno ste kupili artikal, uskoro ce vam se javiti naš operater zbog potvrde porudzbine, hvala!!!');
        return redirect('/');
 
 

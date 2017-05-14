@@ -30,6 +30,7 @@ class ArticleRequest extends FormRequest
             'lager|required',
             'type|required',
             'price|required',
+            'article_code|required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

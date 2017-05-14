@@ -24,6 +24,9 @@ Route::group(['middleware'=>'Admin'],function(){
     Route::get('openOrders','AdminController@openOrders');
     Route::get('closeOrder/{id}','AdminController@closeOrder');
     Route::get('closedOrdersView','AdminController@closedOrdersView');
+    Route::get('searchArticles','AdminController@searchArticles');
+    Route::get('searchArticlesAjax','AdminController@searchArticlesAjax');
+    Route::get('searchArticlesCode','AdminController@searchArticlesCode');
 });
 
 
@@ -36,4 +39,8 @@ Route::get('contact', 'PageController@contact');
 Route::get('support', 'PageController@support');
 Route::get('delivery', 'PageController@delivery');
 Route::get('maps', 'PageController@maps');
+Route::get('muska', 'PageController@articleType');
+Route::get('zenska', 'PageController@articleType');
+Route::get('decija', 'PageController@articleType');
+Route::get('anatomska', 'PageController@articleType');
 

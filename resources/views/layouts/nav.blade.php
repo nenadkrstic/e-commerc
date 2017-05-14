@@ -5,6 +5,34 @@
                 <a href="{{url('home')}}"> e-cvrcak</a>
             </div>
 
+            @if(Auth::check())
+                @if(Auth::user()->status == 9)
+                 <hr>   <h3 class="text-center">Pretraži artikal po šifri</h3><br>
+                    <form action="{{url('searchArticlesCode')}}" mrthod="GET" onkeyup="searchArticles();return false;">
+                        <div class="container">
+                            <div class="container-fluid">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <div id="imaginary_container">
+                                        <div class="input-group stylish-input-group">
+
+                                            <input type="text" name="search" id="article_code" class="form-control"  >
+                                            <span class="input-group-addon">
+                                                <button type="submit">
+                                                    <span class="glyphicon glyphicon-search"></span>
+                                                </button>
+                                            </span>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                @endif
+            @endif
+
 
                      <!--Include layouts cart-->
                         @include('layouts.cart')
@@ -101,17 +129,9 @@
                                     </div>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Deca<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="products.blade.php">Tees</a></li>
-                                    <li><a href="products.blade.php">Shorts</a></li>
-                                    <li><a href="products.blade.php">Gear</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="products.blade.php">Watches</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="products.blade.php">Shoes</a></li>
-                                </ul>
+                            <li >
+                                <a href="#" >Deca</a>
+
                             </li>
 
                             <div class="clearfix"></div>

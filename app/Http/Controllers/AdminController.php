@@ -41,7 +41,7 @@ class AdminController extends Controller
      *insert numbers for curent article
      *
      */
-    public function articleNumber($numbers)
+    public function articleNumber($numbers, $lastId)
     {
         /*
          * Create numbers for already inserted article at table numbers width foreign key on articles id
@@ -91,6 +91,9 @@ class AdminController extends Controller
 
     public function saveArticle(Request $request)
     {
+
+    //  return $art = $request->all();
+
         if ($request->hasFile('img')) {
              //Get last insert article ID
              $id =  Article::all()->last()->id;
@@ -111,7 +114,7 @@ class AdminController extends Controller
              $numbers = $request->number;
 
               //Call articleMethod and explode string, insert numbers for article at table numbers width foreign key on articles id
-             $this->articleNumber($numbers);
+             $this->articleNumber($numbers,$lastId);
 
 
                //call imageCreate method for insert image at directoy
@@ -164,6 +167,34 @@ class AdminController extends Controller
     {
          $cart = Carts::where('cart_status','close')->orderBy('id','desc')->paginate(15);
          return view('admin.closeCarts',compact('cart'));
+    }
+
+    public function searchArticles(Request $request)
+    {
+       return view('admin.searchArticles');
+    }
+
+    public function searchArticlesAjax(Request $request)
+    {
+        if($request->ajax())
+        {
+            $code = $request->input('code');
+            $articles = Article::where('article_code', $code)->get();
+            return json_encode($articles);
+        }
+    }
+
+    /*
+     * admin search article with article_code
+     *
+     */
+
+    public function searchArticlesCode(Request $request)
+    {
+        $code = $request->input('search');
+       $data = Article::with('articleImage')->where('article_code', $code)->first();
+        return view('admin.singleArticleCode', compact('data'));
+
     }
 
 

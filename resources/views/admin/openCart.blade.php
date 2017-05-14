@@ -34,6 +34,7 @@
                         <p class="media-heading">{{$data->cartToArticle->brand}}</p>
                         <p class="media-heading">{{$data->cartToArticle->type}}</p>
                         <p class="media-heading">{{$data->cartToArticle->price}}</p>
+                        <p class="media-heading">{{$data->cartToArticle->article_code}}</p>
 
                     </div>
                     <div class="col-md-1">
@@ -53,7 +54,7 @@
                         <p>Telefon</p><hr>
                         <h5 class="media-heading">{{$data->cartToUser->phone}}</h5><hr>
                         <p class="media-heading">Broj korpe: {{$data->id}}</p>
-                        <p class="media-heading">Korpa kreirana: {{$data->cartToUser->created_at}}</p>
+                        <p class="media-heading">Korpa kreirana: {{$data->created_at}}</p>
                         <a href="{{url('closeOrder',$data->id)}}"><button class="btn btn-sm btn-primary">Zatvori porudzbinu</button></a>
                     </div>
 

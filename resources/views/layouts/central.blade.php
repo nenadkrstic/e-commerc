@@ -24,13 +24,15 @@
 <div class="container">
 @if(isset($art))
     @foreach($art as $a)
+
+
         <div class="col-md-4 text-center">
 
                 <!-- normal -->
                 <div class="ih-item square effect3 bottom_to_top">
                     <div class="bottom-2-top">
 
-                        <div class="img"><img src="images/grid5.jpg" alt="/" class="img-responsive gri-wid"></div>
+                        <div class="img"><img src="uploads/article-{{$a->id}}/img1.jpg" alt="/" class="img-responsive gri-wid"></div>
 
                         <div class="info">
                             <div class="pull-left styl-hdn">
@@ -50,5 +52,10 @@
         </div>
 @endforeach
     @endif
+
 </div>
+<div class="container text-center">
+    {{$art->links()}}
+</div>
+
 

@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Numbers;
+use App\Images;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -13,6 +14,7 @@ class Article extends Model
         'lager',
         'type',
         'price',
+        'article_code',
 
     ];
 

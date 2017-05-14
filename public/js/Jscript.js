@@ -13,17 +13,13 @@ function validateForm(){
     var password = $('#password').val();
 
         if(name == ""){
-
-
-            $('#validate').append('Ime moa biti popunjeno');
+            $('#validate').append('Ime mora biti popunjeno');
             $('#name').css({'border-color':'red'});
             $('html, body').animate({
                 scrollTop: $("#top").offset().top
             }, 2000);
             return false;
         }
-
-
 
 }
 
@@ -75,4 +71,20 @@ function maps(){
     }, 2000);
 
     return false;
+}
+function searchArticles(){
+    var code = $('#article_code').val();
+
+    $.ajax({
+        type:'GET',
+        url:'searchArticlesAjax',
+        data:{code:code},
+        success:function(data){
+            var code = $.parseJSON(data);
+            $.each(code ,function(key, value)
+            {
+                $('#articlesShow').html('<p class="text-center">' + value.name + '</p><p class="text-center">' + value.description + '</p><hr>');
+            })
+        }
+    });
 }

@@ -22,6 +22,7 @@ class CreateArticlesTable extends Migration
             $table->integer('lager');
             $table->string('type');
             $table->decimal('price',6,2);
+            $table->integer('article_code');
             $table->string('img');
             $table->timestamps();
         });

@@ -37,7 +37,7 @@
 
             <div class="form-group row">
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <input class="form-control" type="text" name="brend" placeholder="Marka ili brend artikla">
                 </div>
 
@@ -45,7 +45,7 @@
 
             <div class="form-group row">
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <input class="form-control" type="text" name="lager" placeholder="kolicina">
                 </div>
 
@@ -53,24 +53,38 @@
 
             <div class="form-group row">
 
-                <div class="col-md-6">
-                    <input class="form-control" type="text" name="number" placeholder="Brojevi artikla, primer unosa (35,36,37,38,39,40)">
+                <div class="col-md-3">
+                    <input class="form-control" type="text" name="number" placeholder="Brojevi artikla, primer unosa 35,36,37,38,39,40">
                 </div>
 
             </div>
 
             <div class="form-group row">
 
-                <div class="col-md-6">
-                    <input class="form-control" type="text" name="type" placeholder="vrsta (npr: musko ili decije)">
+                <div class="col-md-3">
+                    <select class="form-control" name="type">
+                        <option value="muska">Muska</option>
+                        <option value="zenska">Zenska</option>
+                        <option value="decija">Decija</option>
+                    </select>
+
+
                 </div>
 
             </div>
 
             <div class="form-group row">
 
-                <div class="col-md-6">
-                    <input class="form-control" type="text" name="price" placeholder="Cena artiklas">
+                <div class="col-md-3">
+                    <input class="form-control" type="text" name="price" placeholder="Cena artikla">
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+
+                <div class="col-md-3">
+                    <input class="form-control" type="text" name="article_code" placeholder="Sifra artikla">
                 </div>
 
             </div>

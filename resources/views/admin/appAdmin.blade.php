@@ -22,6 +22,7 @@
                     <li><a href="{{url('createArticle')}}">Ubaci artikal</a></li>
                     <li><a href="{{url('openOrders')}}">Ovorene porudzbenice</a></li>
                     <li><a href="{{url('closedOrdersView')}}">Zatvorene porudzbenice</a></li>
+                    <li><a href="{{url('searchArticles')}}">Pretraži artikle</a></li>
 
 
                 </ul>

@@ -7,12 +7,11 @@
                 <div class="col-md-2 re-ft-grd">
                     <h3>Categories</h3>
                     <ul class="categories">
-                        <li><a href="#">Muškarci</a></li>
-                        <li><a href="#">Žene</a></li>
-                        <li><a href="#">Deca</a></li>
-                        <li><a href="#">Anatomska</a></li>
-                        <li><a href="#">Casuals</a></li>
-                        <li><a href="#">Sports</a></li>
+                        <li><a href="{{url('muska')}}">Muška</a></li>
+                        <li><a href="{{url('zenska')}}">Ženeska</a></li>
+                        <li><a href="{{url('decija')}}">Dečija</a></li>
+                        <li><a href="{{url('anatomska')}}">Anatomska</a></li>
+
                     </ul>
                 </div>
                 <div class="col-md-2 re-ft-grd">
@@ -21,7 +20,6 @@
                         <li><a href="#links" onclick="contact();return false;">Kontaktirajte nas</a></li>
                         <li><a href="#" onclick="support();return false;">Podrška</a></li>
                         <li><a href="#" onclick="delivery();return false;">Isporuka</a></li>
-
                         <li><a href=""  onclick="maps();return false;">Mapa</a></li>
                     </ul>
                 </div>
